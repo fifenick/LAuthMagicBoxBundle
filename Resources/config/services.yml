@@ -1,0 +1,210 @@
+services:
+
+
+
+     MB.Accordion:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Accordion
+        parent: MB.Abstract_Meta
+        arguments: [ "%webRoot%"]
+        scope: prototype
+
+     MB.Alert:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Alert
+        parent: MB.Abstract_Meta
+        scope: prototype
+
+     MB.Abstract_Meta:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationComponent\Meta
+        abstract:  true
+        scope: prototype
+        calls:
+             - [init]
+
+     MB.Badge:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Badge
+         parent: MB.Abstract_Meta
+         scope: prototype
+         
+     MB.Breadcrumb:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Breadcrumb
+         parent: MB.Abstract_Meta
+         scope: prototype
+
+     MB.Button:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Button
+         parent: MB.Abstract_Meta
+         scope: prototype
+
+     MB.Carousel:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Carousel
+         parent: MB.Abstract_Meta
+         arguments: [@service_container]
+         scope: prototype
+   
+     MB.Flickrit:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Flickrit
+         parent: MB.Abstract_Meta
+         scope: prototype
+
+     MB.GoogleMap:
+       class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\GoogleMap
+       parent: MB.Abstract_Meta
+       arguments: [ "%webRoot%", @MB.JavascriptHeader ]
+       scope: prototype
+
+     MB.Grid:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\BootstrapGrid
+         scope: prototype
+
+     MB.JavascriptHeader:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Javascript
+         scope: request
+
+     MB.Jumbotron:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Jumbotron
+         scope: prototype  
+        
+     MB.List:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\ListGroup
+         parent: MB.Abstract_Meta
+         scope: prototype
+       
+     MB.Navigation:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Navigation
+         scope: prototype
+         tags:{ name: SiteNavigation }
+
+     MB.Pagination:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Pagination
+         parent: MB.Abstract_Meta
+         scope: prototype
+
+     MB.PaginationTable:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\PaginationTable
+         parent: MB.Abstract_Meta
+         arguments: [ @MB.Table, @MB.Pagination]
+         scope: prototype
+
+     MB.Table:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Table
+         parent: MB.Abstract_Meta
+         scope: prototype
+
+     MB.Tab:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Tab
+         parent: MB.Abstract_Meta
+         scope: prototype
+
+     MB.twig_Accordion:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigAccordion
+        public: false
+        arguments: [ "%webRoot%"]
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Alert:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigAlert
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Badge:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigBadge
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Breadcrumb:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigBreadcrumb
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Button:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigButton
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Carousel:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigCarousel
+        public: false
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Flickrit:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigFlickrit
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_GoogleMap:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigGoogleMap
+        public: false
+        arguments: ["%webRoot%", @service_container]
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Javascript:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigJavascript
+        public: false
+        arguments: ["@service_container"]
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Jumbotron:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigJumbotron
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_List:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigList
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Navigation:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigNavigation
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Pagination:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigPagination
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_PaginationTable:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigPaginationTable
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Tab:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigTab
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Table:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigTable
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.twig_Well:
+        class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Twig\TwigWell
+        public: false
+        tags:
+            - { name: twig.extension }
+
+     MB.Well:
+         class: LAuth\MagicBoxBundle\Services\Presentation\PresentationEntity\Well
+         parent: MB.Abstract_Meta
+         scope: prototype
+
+
+

@@ -1,0 +1,3 @@
+l_auth_magic_box_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: LAuthMagicBoxBundle:Default:index }
