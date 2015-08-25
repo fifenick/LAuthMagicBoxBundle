@@ -1,0 +1,20 @@
+{
+    "name": "l-auth/magic-box-bundle",
+    "description": "Display extension bundle for Symfony",
+    "type": "symfony-bundle",
+    "require": {
+        "php": "5.4",
+        "symfony/symfony": "2.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit-mock-objects": "4.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "nick mullen",
+            "email": "nick-mullen@hotmail.co.uk"
+        }
+    ],
+    "minimum-stability": "stable"
+}
