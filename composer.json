@@ -6,9 +6,6 @@
         "php": "5.4",
         "symfony/symfony": "2.5"
     },
-    "require-dev": {
-        "phpunit/phpunit-mock-objects": "4.2"
-    },
     "license": "MIT",
     "authors": [
         {
