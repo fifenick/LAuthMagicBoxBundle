@@ -1,5 +1,5 @@
 {
-    "name": "l-auth/magic-box-bundle",
+    "name": "lauth/magic-box-bundle",
     "description": "Display extension bundle for Symfony",
     "type": "symfony-bundle",
     "require": {
