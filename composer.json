@@ -15,9 +15,5 @@
         }
     ],
     "minimum-stability": "stable"
-    ,"autoload":     {
-        "psr-0": {
-            "LAuth\\hMagicBoxBundle\\LAuthMagicBoxBundle": ""
-        }
-    }
+
 }
