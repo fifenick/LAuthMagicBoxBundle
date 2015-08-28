@@ -20,5 +20,5 @@
             "LAuth\\MagicBoxBundle\\": ""
         }
      },
-     "target-dir": "lauth/magic-box-bundle",
+     "target-dir": "lauth/magic-box-bundle"
 }
