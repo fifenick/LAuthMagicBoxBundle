@@ -19,6 +19,6 @@
         "psr-4": {
             "LAuth\\MagicBoxBundle\\": ""
         }
-     }
+     },
      "target-dir": "lauth/magic-box-bundle",
 }
