@@ -16,9 +16,6 @@
     ],
     "minimum-stability": "stable",
     "autoload": {
-        "psr-0": {
-            "LAuth\\MagicBoxBundle\\": ""
-        }
-     },
-     "target-dir": "lauth/magic-box-bundle"
+        "psr-4": { "LAuth\\MagicBoxBundle\\": "" }
+    }
 }
