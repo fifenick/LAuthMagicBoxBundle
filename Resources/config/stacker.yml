@@ -1,6 +1,2 @@
 parameters:
-    coretemplates: Default
-    fileRoot: http://127.0.0.1/sandbox/web/
     webRoot: http://127.0.0.1/sandbox/web/app_dev.php/
-    templateSettings:
-       - Default:
