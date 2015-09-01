@@ -16,6 +16,6 @@
     ],
     "minimum-stability": "stable",
     "autoload": {
-        "psr-0": { "LAuth\\MagicBoxBundle\\": "" }
+        "psr-4": { "LAuth\\MagicBoxBundle\\": "" }
     }
 }
