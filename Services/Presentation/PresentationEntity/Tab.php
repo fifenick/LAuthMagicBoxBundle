@@ -19,7 +19,7 @@
   /**
    *  @var array hold tab values 
    */
-	private $tab = array();
+private $tab = array();
 
   /**
    *  @var boolean show tabs as pills 
@@ -31,11 +31,15 @@
    */
   private $justified = Null;
 
+  /**
+   * tab to make active active 
+   */
+  private $active = 0;
 
-	public function  __construct() { }
+public function  __construct() { }
 
-	/**
-	 * add a tab
+/**
+* add a tab
    *
    * @param string $title the title (link text) displayed
    * @param string $text the main display 
@@ -43,18 +47,18 @@
    * @param boolean $pills display as pills
    * @param boolean $justified display tabs with equal width
    * @return array tabs array
-	 */
-	public function addTab($title,$text,$order,$pills = Null,$justified=Null) {
-		$tab['title'] =  $title;
-		$tab['text'] =  $text;
-		$tab['order'] =  $order;
+*/
+public function addTab($title,$text,$order,$pills = Null,$justified=Null) {
+$tab['title'] =  $title;
+$tab['text'] =  $text;
+$tab['order'] =  $order;
     $tab['id'] = $this->getRandId();
     
     if (is_numeric($order) == false) {
       echo "'{$order}' is not numeric", PHP_EOL;
       break;
     }
- 		
+  
     // add tab to array of tabs
     array_push($this->tab , $tab);
     
@@ -94,6 +98,24 @@
     }
   }
 
+
+  /**
+   * setActive
+   * 
+   * @param numeric $tab index of tab to be made active
+   */
+  public function setActive($tab){
+    $this->active = $tab;
+  }
+
+  /**
+   * getActive
+   * 
+   */
+  public function getActive(){
+    return $this->active;
+  }
+
   /**
    *  setPills
    * 
@@ -111,26 +133,26 @@
    * return the tab
    * @return array the tab array
    */
-	public function getTab() {
+public function getTab() {
      usort($this->tab, function($a, $b) {
         return $a['order'] - $b['order'];
     });
-		return  $this->tab;
+return  $this->tab;
   }
 
- 	/**
-  	* output the object   
+  /**
+  * output the object   
     * 
     * @param string $type the markup type
     * @return string the tab as markup 
-  	*/
-	public function render($type) {
-    	if (strtolower($type) == 'html') {
-    		$content = $this->renderHTML();
-    	} else{
-      		throw $this->createNotFoundException( 'type not found for'.$type);
-    	}
-		return $content;
+  */
+public function render($type) {
+    if (strtolower($type) == 'html') {
+    $content = $this->renderHTML();
+    } else{
+      throw $this->createNotFoundException( 'type not found for'.$type);
+    }
+return $content;
   }
 
   /**
@@ -152,10 +174,10 @@
    * render the alert as html
    * @return string tab as html
    */
-	private function renderHTML() {
+private function renderHTML() {
     $content = '';
     if($this->hasContent()) {
-     	foreach ($this->getTab() as $tab) {
+      foreach ($this->getTab() as $tab) {
         $content = '<ul ';
         if($this->pills !== 'True'){
           if($this->justified !== 'True'){
@@ -175,20 +197,20 @@
         $i = 0;
         foreach ($this->getTab() as $tab) {
           $content = $content.'<li role="presentation" ';       
-          if($i == 0){
+          if($i == $this->getActive()){
             $content = $content.' class="active" ';
           }
           $content = $content.'><a href="#'.$tab['id'].'" data-toggle="tab">'.$tab['title'].'</a></li>';
           $i++;
         }
         $content = $content.'</ul>';
-     	}
+      }
 
       $content = $content.'<div id="my-tab-content" class="tab-content">';
       $x = 0;
       foreach ($this->getTab() as $tab) {
         $content = $content.'<div class="tab-pane ';
-        if($x == 0){
+        if($x == $this->getActive()){
             $content = $content.' active ';
           } 
         $content = $content.'" id="'.$tab['id'].'">'.$tab['text'].'</div>';
@@ -200,6 +222,6 @@
       // add javascript
       $content = $content.'<script type="text/javascript">jQuery(document).ready(function ($){$("#tabs").tab();});</script>';
     }
-		return $content;
-	}
+return $content;
+}
 }
