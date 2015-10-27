@@ -41,20 +41,26 @@
    */
   private $disabled;
 
-	public function  __construct() {}
+  /**
+   * @var url to post to
+   */
+  private $formaction;
 
-	/**
-	  * add a button
+public function  __construct() {}
+
+/**
+ * add a button
     * @param string $text display text
     * @param string $style css style to apply
     * @param string $size   large| small | extrasmall
     * @param boolean $block display as block
     * @param boolean $disabled disable the button
-	  */
-	public function addItem($text,$style,$size=Null,$block=Null,$active=Null,$disabled=Null) {
-		$this->text =  $text;
+ */
+public function addItem($text,$style,$size=Null,$block=Null,$active=Null,$disabled=Null,$formaction = Null) {
+$this->text =  $text;
     $this->setStyle($style);
     $this->setSize($size);
+    $this->setFormaction($formaction);
     if($block){
       $this->setBlock();
     }
@@ -65,6 +71,24 @@
       $this->setDisabled();
     }    
   }
+
+
+ /**
+    * set the post url
+    * @return string post url
+    */
+  public function setFormaction($url) {
+    return $this->formaction = $url;
+  }
+
+ /**
+    * get the post url
+    * @return string post url
+    */
+  public function getFormaction() {
+    return $this->formaction;
+  }
+
 
  /**
     * set diplay as Disabled
@@ -171,22 +195,22 @@
     * 
     * @return string the display text
     */
-	public function getText() {
-		return  $this->text;
+public function getText() {
+return  $this->text;
   }
 
- 	/**
-  	*  output the object   
+  /**
+  *  output the object   
     *   @param string $type type ofmarkup
     *   @return string raw markup
-  	*/
-	public function render($type) {
-  	if ($type == 'html') {
-  		$content = $this->renderHTML();
-  	} else{
-    		throw $this->createNotFoundException( 'type not found for'.$type);
-  	}
-		return $content;
+  */
+public function render($type) {
+  if ($type == 'html') {
+  $content = $this->renderHTML();
+  } else{
+    throw $this->createNotFoundException( 'type not found for'.$type);
+  }
+return $content;
   }
 
   
@@ -196,15 +220,20 @@
    * @return string button as html
    * 
    */
-	 private function renderHTML() {
+private function renderHTML() {
     $content = '';
-    $content = $content.'<button type="button" ';
+    $content = $content.'<button ';
+    if($this->getFormAction()){
+      $content = $content.'formmethod="post" type="submit"  formaction = "'.$this->getFormAction().'" ';
+    }else{
+      $content = $content.'type="button" ';
+    }
     $content = $content.$this->renderClass('btn '.$this->getSize().$this->getBlock().$this->getActive() );
     $content = $content.$this->renderID();
     if($this->getDisabled()){
       $content = $content.'disabled="disabled"';
     }
- 		$content = $content.' >'.$this->getText().'</button>';
-		return $content;
-	}
+  $content = $content.' >'.$this->getText().'</button>';
+return $content;
+}
 }
